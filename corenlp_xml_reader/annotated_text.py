@@ -143,7 +143,7 @@ class AnnotatedText(object):
             sent_tags = self.soup.find('sentences').find_all('sentence')
 
         # Tolerate an article having no sentences
-        except AttributeError, e:
+        except AttributeError:
             sent_tags = []
 
         # Process each sentence tag
@@ -619,7 +619,7 @@ class AnnotatedText(object):
         depth += 1
         if 'children' in root_token:
             for relation, child in root_token['children']:
-                print '  '*depth + relation + ' ' + child['word']
+                print('  '*depth + relation + ' ' + child['word'])
                 self.print_dep_tree(child, depth)
 
 
@@ -627,10 +627,10 @@ class AnnotatedText(object):
 
     def print_tree(self, tree):
         if len(tree['c_children']) == 0:
-            print ''+('  '*tree['c_depth'])+tree['c_tag']+ ' : ' + tree['word']
+            print(''+('  '*tree['c_depth'])+tree['c_tag']+ ' : ' + tree['word'])
 
         else:
-            print '' + ('  '*tree['c_depth'])+tree['c_tag']+ ' :'
+            print('' + ('  '*tree['c_depth'])+tree['c_tag']+ ' :')
             for child in tree['c_children']:
                 self.print_tree(child)
 
@@ -919,7 +919,7 @@ class AnnotatedText(object):
                 # No other character should be seen in this state,
                 # otherwise something has gone wrong.
                 else:
-                    print text[i-4:i+4], text[i]
+                    print(text[i-4:i+4], text[i])
                     raise ValueError(
                         'Expected closing a constituent or opening'
                         ' a new one.'#  Saw "%s" instead' % c
@@ -1301,7 +1301,7 @@ class Token(dict):
             self['id'], self['word'], offset, self['pos'], ner
         )
 
-        description = description.encode('utf8')
+        # description = description.encode('utf8')
 
         return description
 

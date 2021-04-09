@@ -1,1 +1,1 @@
-from annotated_text import AnnotatedText, Token, Sentence
+from .annotated_text import AnnotatedText, Token, Sentence
